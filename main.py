@@ -16,11 +16,20 @@ response = requests.get(url, headers=headers)
 
 results = response.json()['rows']
 print()
-print('RESULTS:\n')
+print('POSSIBLE SYMPTOMS:\n')
+
+i=1
 for symptom in results :
-	print (symptom['name'])
+	print ('[' + str(i) + ']' + symptom['name'])
+	i+=1
+
+print ('SELECT A SYMPTOM FROM THE LIST:')
+selected = int(input())
 
 
+if selected == 0 or selected > i:
+		print ('INCORRECT INPUT')
+		exit()
 
 
 

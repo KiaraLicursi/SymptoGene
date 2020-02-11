@@ -31,5 +31,11 @@ if selected == 0 or selected > i:
 		print ('INCORRECT INPUT')
 		exit()
 
+suggested_genes = results[selected -1]['associated_genes']
+
+print()
+print('Suggested genes:')
+print(suggested_genes)
+
 
 

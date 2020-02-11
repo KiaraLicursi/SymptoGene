@@ -34,8 +34,27 @@ if selected == 0 or selected > i:
 suggested_genes = results[selected -1]['associated_genes']
 
 print()
-print('Suggested genes:')
+print('SUGGESTED GENES')
 print(suggested_genes)
+#comment no genes found
 
 
+from openpyxl import load_workbook
+
+
+wb = load_workbook(filename = 'lifelabs.xlsx')
+sheet_ranges = wb['Sheet1']
+cells = sheet_ranges['B37:B4281']
+genes = []
+for cell in cells:
+ value_stripped = cell[0].value.strip()
+ if value_stripped:
+  # strip all values (remove whitespace)
+  values = list(v.strip() for v in value_stripped.split(','))
+  # add to list of genes
+  genes = genes + values
+
+# convert to a set for fast lookup
+genes = set(genes)
+print(genes)
 
